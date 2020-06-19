@@ -31,6 +31,12 @@ const validate = _options => {
       return new TypeError(`invalid option. Username must be a string primitive.`);
     }
   }
+  if (
+    Object.prototype.hasOwnProperty.call(_options, 'token') ||
+    Object.prototype.hasOwnProperty.call(_options, 't')
+  ) {
+    options.token = _options.token || _options.t;
+  }
   if (Object.prototype.hasOwnProperty.call(_options, 'repo') || Object.prototype.hasOwnProperty.call(_options, 'r')) {
     options.repo = _options.repo || _options.r;
     if (!isString(options.repo)) {
